@@ -31,11 +31,11 @@ const Home = () => {
     }
     
     return (
-        <Container >
+        <Container className="mx-auto">
             <Header></Header>
-            <div className="d-flex justify-content-center py-4">
-                <Form inline>
-                    <FormControl type="text" placeholder="Search Item" className="border-0 bg-light rounded-0" />
+            <div >
+                <Form className="justify-content-center py-4" inline>
+                    <FormControl type="text" placeholder="Search Item" className="w-50 border-0 bg-light rounded-0" />
                     <Button className="rounded-0" variant="danger">Search</Button>
                 </Form>
             </div>
