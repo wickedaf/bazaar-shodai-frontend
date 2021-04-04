@@ -1,10 +1,14 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import Header from '../Header/Header';
 
 const NoMatch = () => {
     return (
-        <div className="text-center">
-            <h1>Nothing Found</h1>
-        </div>
+        <Container className="text-center">
+            <Header></Header>
+            <h1 className="mt-5">Sorry!!! Nothing Has Been Found ☹</h1>
+            <img src="/notFound.gif" alt=""/>
+        </Container>
     );
 };
 
