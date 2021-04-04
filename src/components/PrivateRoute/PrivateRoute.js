@@ -4,7 +4,8 @@ import { useContext } from 'react';
 import { UserContext } from '../../App';
 
 const PrivateRoute = ({children, ...rest}) => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {userInfo, cartInfo} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = userInfo;
     return (
         <Route
             {...rest}

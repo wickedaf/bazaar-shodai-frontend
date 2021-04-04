@@ -4,8 +4,7 @@ import NoMatch from './components/NoMatch/NoMatch';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Orders from './components/Orders/Orders';
 import Admin from './components/Admin/Admin';
@@ -17,8 +16,9 @@ export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [cart, setCart] = useState([]);
   return (
-    <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value = {{userInfo : [loggedInUser, setLoggedInUser], cartInfo: [cart, setCart]}}>
       <Router>
           <Switch>
             <PrivateRoute path="/orders">

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
-import { Button, Container } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
@@ -24,7 +24,8 @@ const Auth = () => {
         photo: ''
     });
 
-    const [loggedInUser, setLoggedInUser ] = useContext(UserContext);
+    const {userInfo, cartInfo} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = userInfo;
     const history = useHistory();
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
@@ -83,7 +84,6 @@ const Auth = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
         .then((result) => { 
-            console.log(user);
             const {displayName, photoURL, email} = result.user;
             const signedInUser = {
                 isSignedIn: true,
@@ -143,8 +143,8 @@ const Auth = () => {
                             ? <input className="form-control my-3 bg-primary text-white" type="submit" value="Create New User" />
                             : <input className="form-control my-3 bg-primary text-white" type="submit" value="Login" />}
                             { newUser 
-                                ? <p>Already have an account? <Link onClick={() => setNewUser(!newUser)} >Login</Link></p>
-                                : <p>Don't have an account? <Link onClick={() => setNewUser(!newUser)} >Create an account</Link></p>
+                                ? <p>Already have an account? <Link to="#" onClick={() => setNewUser(!newUser)} >Login</Link></p>
+                                : <p>Don't have an account? <Link to="#" onClick={() => setNewUser(!newUser)} >Create an account</Link></p>
                             }
                             
                         </form>

@@ -12,7 +12,7 @@ const Item = (props) => {
                 </div>
                 <div className="d-flex justify-content-between align-items-center">
                     <div>
-                        <Card.Title className="d-inline text-danger">{price}</Card.Title>
+                        <Card.Title className="d-inline text-danger">{price} Tk</Card.Title>
                     </div>
                     <Button onClick={()=> props.handleAddToCart(props.itemInfo)} variant="danger">Buy Now</Button>
                 </div>

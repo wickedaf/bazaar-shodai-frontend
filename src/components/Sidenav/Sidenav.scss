@@ -1,0 +1,13 @@
+.sidebar {
+    height: 100vh !important;
+}
+
+.prosidebar-wrapper{
+    background-image: url('./yriR7I6SYy.jpg');
+}
+
+
+
+$sidebar-bg-color: #0d1129;
+
+@import '~react-pro-sidebar/dist/scss/styles.scss';
