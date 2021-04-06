@@ -34,8 +34,6 @@ const Orders = () => {
                 console.error('Error:', error);
             }); 
 
-        }else{
-            alert("You didn't add any Item in your cart");
         }
         
     }, [cart, loggedInUser, setCart]);
