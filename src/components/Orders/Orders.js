@@ -34,6 +34,8 @@ const Orders = () => {
                 console.error('Error:', error);
             }); 
 
+        }else{
+            alert("You didn't add any Item in your cart");
         }
         
     }, [cart, loggedInUser, setCart]);
@@ -42,10 +44,17 @@ const Orders = () => {
     useEffect(() => {
         fetch('https://bazaar-shodai.herokuapp.com/userCart?mail='+loggedInUser.email)
         .then(res => res.json())
-        .then(data => setCartItem(data[0]));
+        .then(data => {
+            // Merging all item from the cart of an User into a single array 
+            const totalItem = data.map(item => item.item).reduce((pre, curr) => pre.concat(curr));
+            setCartItem(totalItem);
+            console.log(totalItem);
+           
+        });
     }, [loggedInUser.email, cart]);
 
-    const grandTotal = cartItem?.item?.map(itm => {
+    //Calculating item price and quantity then setting this item property as itemTotal. Using reduce() method finally summed up the Grand Total.
+    const grandTotal = cartItem?.map(itm => {
         const itemTotal = itm.price * itm.quantity;
         itm.itemTotal = itemTotal;
         return itm.itemTotal;
@@ -69,7 +78,7 @@ const Orders = () => {
                 </thead>
                 <tbody>     
                     {
-                        cartItem?.item?.map(itm => <Tablerow key={itm._id} itmInfo={itm}></Tablerow>)
+                        cartItem?.map(itm => <Tablerow key={itm._id} itmInfo={itm}></Tablerow>)
                     }
                     <tr className="bg-white">
                         <td colSpan="2"><h4>Total</h4></td>
