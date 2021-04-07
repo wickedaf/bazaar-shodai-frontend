@@ -35,7 +35,8 @@ const Home = () => {
       }
       setCart(newCart);
     } else {
-        history.push("/login");
+        history.push("/orders");
+        setCart(item);
     }
   };
  
